@@ -23,3 +23,9 @@ course from testdriven.io
 - ADD vs. COPY
 - ENTRYPOINT vs. CMD
 - .dockerignore
+
+
+flask
+- django vs. flask https://testdriven.io/blog/django-vs-flask/ & https://devel.tech/features/django-vs-flask & https://kite.com/blog/python/flask-vs-django-python
+- authentication: who are you?
+- authorization: what are you allowed to do?
