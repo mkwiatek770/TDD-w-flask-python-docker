@@ -20,6 +20,10 @@ user = api.model('User', {
 
 class UsersList(Resource):
 
+    @api.marshal_with(user, as_list=True)
+    def get(self):
+        return User.query.all(), 200
+
     @api.expect(user, validate=True)
     def post(self):
         post_data = request.get_json()
@@ -40,4 +44,16 @@ class UsersList(Resource):
         }
         return response_object, 201
 
+
+class Users(Resource):
+
+    @api.marshal_with(user)
+    def get(self, user_id):
+        user = User.query.filter_by(id=user_id).first()
+        if not user:
+            api.abort(404, f'User {user_id} does not exist')
+        return user, 200
+
+
 api.add_resource(UsersList, '/users')
+api.add_resource(Users, '/users/<int:user_id>')

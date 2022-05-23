@@ -17,5 +17,12 @@ def recreate_db():
     db.session.commit()
 
 
+@cli.command('populate_db')
+def populate_db():
+    db.session.add(User(username='mike', email='mike@gmail.com'))
+    db.session.add(User(username='pete', email='pete@gmail.com'))
+    db.session.commit()
+
+
 if __name__ == '__main__':
     cli()
